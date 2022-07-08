@@ -1,9 +1,12 @@
 var backTop = document.getElementsByClassName('go_top_btn')[0];
+
 window.onscroll = function () {
   if (document.documentElement.scrollTop > 400) {
     backTop.style.visibility = "visible";
+    backTop.style.opacity = "1";
   } else {
     backTop.style.visibility = "hidden";
+    backTop.style.opacity = "0";
   }
 };
 
@@ -29,17 +32,19 @@ function navbar_click(elem){
 var isExpandedNavbar = false;
 
 function mobile_navbar(){
-  let links = document.getElementsByClassName('links')[0];
+  let links = document.querySelector('.links');
   let icon = document.getElementById("toggler_img");
+  let controls = document.querySelector(".controls");
+
+  controls.classList.toggle("open");
+  links.classList.toggle("open");
 
   if(isExpandedNavbar){
       isExpandedNavbar = false;
-      links.style.display = 'none';
       icon.src = "img/hamburger.svg";
   }
   else{
     isExpandedNavbar = true;
-    links.style.display = 'flex';
     icon.src = "img/cross.svg";
   }
 }
@@ -52,7 +57,8 @@ function send_email(){
   if (name_status && email_status && subj_status && msg_status){
     var link = "mailto:dchiruk@gmail.com"
              + "?subject=" + escape(document.getElementById('Subject').value)
-             + "&body=" + escape("Hi, I`m " + document.getElementById('Name').value + ". \nThis is the message from your website.\n\n"
+             + "&body=" + escape("Hi, I`m " + document.getElementById('Name').value
+             + ". \nThis is the message from your website.\n\n"
              + document.getElementById('Message').value + "\n\n");
     window.location.href = link;
     reset_mail_fields();
