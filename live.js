@@ -1,5 +1,7 @@
 var backTop = document.getElementsByClassName('go_top_btn')[0];
 
+var isExpandedNavbar = false;
+
 window.onscroll = function () {
   if (document.documentElement.scrollTop > 400) {
     backTop.style.visibility = "visible";
@@ -7,6 +9,10 @@ window.onscroll = function () {
   } else {
     backTop.style.visibility = "hidden";
     backTop.style.opacity = "0";
+  }
+
+  if (isExpandedNavbar){
+    mobile_navbar();
   }
 };
 
@@ -29,8 +35,6 @@ function navbar_click(elem){
   }
 }
 
-var isExpandedNavbar = false;
-
 function mobile_navbar(){
   let links = document.querySelector('.links');
   let icon = document.getElementById("toggler_img");
@@ -47,6 +51,16 @@ function mobile_navbar(){
     isExpandedNavbar = true;
     icon.src = "img/cross.svg";
   }
+}
+
+var mainpage = document.querySelectorAll(".main_page")
+
+for (let i = 0; i<mainpage.length; i++){
+  mainpage[i].addEventListener("click", () => {
+    if (isExpandedNavbar){
+      mobile_navbar();
+    }
+  });
 }
 
 var name_status, email_status, subj_status, msg_status;
