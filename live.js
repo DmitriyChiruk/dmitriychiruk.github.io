@@ -1,6 +1,10 @@
 var backTop = document.getElementsByClassName('go_top_btn')[0];
-
 var isExpandedNavbar = false;
+var navbar_links = document.getElementsByClassName('nav-bar-link');
+var icon = document.getElementById("toggler_img");
+var links = document.querySelector('.links');
+var mainpage = document.querySelectorAll(".main_page");
+var name_status, email_status, subj_status, msg_status;
 
 window.onscroll = function () {
   if (document.documentElement.scrollTop > 400) {
@@ -16,44 +20,44 @@ window.onscroll = function () {
   }
 };
 
-var links = document.getElementsByClassName('nav-bar-link');
-
 function navbar_default(){
-  for (let i=0; i < links.length; i++){
-    links[i].className = "nav-bar-link";
+  for (let i=0; i < navbar_links.length; i++){
+    navbar_links[i].className = "nav-bar-link";
   }
 }
 
 function navbar_click(elem){
   navbar_default();
-  elem.className = "nav-bar-link active";
+  elem.className += " active";
 
   if(isExpandedNavbar){
-    isExpandedNavbar = false;
-    let links = document.getElementsByClassName('links')[0];
-    links.style.display = 'none';
+    mobile_navbar();
   }
 }
 
 function mobile_navbar(){
-  let links = document.querySelector('.links');
-  let icon = document.getElementById("toggler_img");
   let controls = document.querySelector(".controls");
 
   controls.classList.toggle("open");
   links.classList.toggle("open");
 
   if(isExpandedNavbar){
-      isExpandedNavbar = false;
-      icon.src = "img/hamburger.svg";
+      hide_navbar();
   }
   else{
-    isExpandedNavbar = true;
-    icon.src = "img/cross.svg";
+      show_navbar();
   }
 }
 
-var mainpage = document.querySelectorAll(".main_page")
+function hide_navbar(){
+  isExpandedNavbar = false;
+  icon.src = "img/hamburger.svg";
+}
+
+function show_navbar(){
+  isExpandedNavbar = true;
+  icon.src = "img/cross.svg";
+}
 
 for (let i = 0; i<mainpage.length; i++){
   mainpage[i].addEventListener("click", () => {
@@ -62,8 +66,6 @@ for (let i = 0; i<mainpage.length; i++){
     }
   });
 }
-
-var name_status, email_status, subj_status, msg_status;
 
 function send_email(){
   console.log("send_email()");
