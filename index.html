@@ -52,7 +52,12 @@
 				<ul>
 					<li><b>From:</b> Kharkiv, Ukraine</li>
 					<li><b>Live in:</b> Kyiv, Ukraine</li>
-					<li><b>Age:</b> 18</li>
+					<li><b>Age:</b>	<myage id="my_age"><myage>
+						<script>
+							today = new Date()
+							document.getElementById('my_age').innerText = today.getFullYear() - 2003 - (today.getMonth() < 10 )
+						</script>
+					</li>
 					<li><b>Gender:</b> male</li>
 				</ul>
 				<a href="downloads/Dmytro Chyruk Resume.pdf" download="Dmytro Chyruk Resume.pdf" target="_blank"><button>Download CV</button></a>
