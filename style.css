@@ -400,13 +400,30 @@ start*/
 		font-size: 25px;
 	}
 	
+	#about .data{
+		display: flex;
+		justify-self: center;
+	}
+
 	#about .data h3{
 		font-size: 16px;
 	}
 
 	#about .data ul{
 		font-size: 14px;
-		padding: 0 3%
+		padding: 0;
+	}
+
+	#about .data .dev{
+		width: 42.5%;
+		padding-right: 2.5%;
+		padding-left: 5%;
+	}
+
+	#about .data .langs{
+		width: 42.5%;
+		padding-right: 5%;
+		padding-left: 2.5%;
 	}
 }
 /*About page
@@ -500,14 +517,31 @@ start*/
 
 @media (max-width: 716px) {
 	#experience{
+		width: 100%;
 		flex-direction: column;
 		margin: 0;
 		padding: 0;
+		padding-top: 5%;
+	}
+
+	#experience .additional_exp{
+		display: flex;
+		flex-direction: column;
+	}
+
+	#experience .work_exp{
+		width: 80%;
+		padding: 5% 10%;
 	}
 
 	#experience .education{
 		width: 80%;
-		padding: 10% 10% 10% 5%;
+		padding: 5% 10%;
+	}
+
+	#experience .projects{
+		width: 80%;
+		padding: 5% 10%;
 	}
 
 	#experience h3{
