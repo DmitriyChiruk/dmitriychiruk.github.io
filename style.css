@@ -415,16 +415,22 @@ end*/
 /*Experience page
 start*/
 #experience	{
-	width: 100%;
+	width: 80%;
+	padding-left: 10%;
+	padding-top: 5%;
 	background-color: white;
 	margin-bottom: 5%;
+	display: grid;
+}
+
+#experience .additional_exp{
+	display: flex;
 	align-items: flex-start;
 }
 
 #experience .education{
-	width: 35%;
+	width: 45%;
 	padding-top: 5%;
-	padding-left: 10%;
 	padding-right: 5%;
 }
 
@@ -434,10 +440,9 @@ start*/
 	border-radius: 2px;
 }
 
-#experience .work_exp{
-	width: 40%;
+#experience .projects{
+	width: 50%;
 	padding-top: 5%;
-	padding-right: 10%;
 }
 
 #experience ul{
@@ -451,6 +456,13 @@ start*/
 	padding: 1em;
 	border-radius: 15px;
 	list-style: none;
+}
+
+#experience .work_exp .checklist li{
+	margin: 0.5em 1em;
+	padding: 0;
+	list-style: inside;
+	list-style-type: disc;
 }
 
 #experience h3{
@@ -582,7 +594,7 @@ start*/
 
 #contact .soc_media a{
 	color: black;
-	text-decoration-line: none;
+	text-decoration-line: underline;
 	font-style: italic;
 }
 
