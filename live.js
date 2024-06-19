@@ -1,5 +1,10 @@
-var backTop = document.getElementsByClassName('go_top_btn')[0];
+const min_mobile_width = 720
+const min_mobile_height = 500
 var isExpandedNavbar = false;
+var  previousScrollPosition = 0;
+
+var backTop = document.getElementsByClassName('go_top_btn')[0];
+var controls = document.querySelector('.controls');
 var navbar_links = document.getElementsByClassName('nav-bar-link');
 var icon = document.getElementById("toggler_img");
 var links = document.querySelector('.links');
@@ -17,6 +22,17 @@ window.onscroll = function () {
 
   if (isExpandedNavbar){
     mobile_navbar();
+  }
+
+  let controls_height = window.screen.height * 0.15;
+  if (is_mobile_version()){
+    if (isScrollingDown()){
+      console.log(controls_height)
+      controls.style.top = "-70px";
+    }
+    else {
+      controls.style.top = "0";
+    }
   }
 };
 
@@ -36,8 +52,6 @@ function navbar_click(elem){
 }
 
 function mobile_navbar(){
-  let controls = document.querySelector(".controls");
-
   controls.classList.toggle("open");
   links.classList.toggle("open");
 
@@ -85,12 +99,6 @@ function send_email(){
       check_subject();
       check_message();
   }
-  /*
-  console.log("name_status = " + name_status);
-  console.log("email_status = " + email_status);
-  console.log("subj_status = " + subj_status);
-  console.log("msg_status = " + msg_status);
-  */
 }
 
 function reset_mail_fields(){
@@ -116,7 +124,6 @@ function contains_digits(str){
 }
 
 function check_name() {
-  //console.log("check_name()");
   let name = document.getElementById('Name');
 
   if(name.value.length == 0){
@@ -142,7 +149,6 @@ function check_name() {
 }
 
 function check_email(){
-  //console.log("check_email()");
   let email = document.getElementById('Email');
   let email_template = /^[a-zA-Z0-9.]+@+[a-zA-Z\d]+(.com)$/;
 
@@ -163,7 +169,6 @@ function check_email(){
 }
 
 function check_subject(){
-  //console.log("check_subject()");
   let subj = document.getElementById('Subject');
   subj_status = (subj.value.length != 0);
 
@@ -175,7 +180,6 @@ function check_subject(){
 }
 
 function check_message(){
-  //console.log("check_message()");
   let msg = document.getElementById('Message');
   msg_status = (msg.value.length != 0);
 
@@ -184,4 +188,30 @@ function check_message(){
   } else {
     msg.className = "form";
   }
+}
+
+function is_mobile_version(){
+  if (window.screen.width <= min_mobile_width){
+    return true
+  }
+
+  if (window.screen.height <= min_mobile_height){
+    return true
+  }
+
+  return false
+}
+
+function isScrollingDown() {
+  let goingDown = false;
+
+  let scrollPosition = window.pageYOffset;
+
+  if (scrollPosition > previousScrollPosition) {
+    goingDown = true;
+  }
+
+  previousScrollPosition = scrollPosition;
+
+  return goingDown;
 }
