@@ -34,6 +34,9 @@ window.onscroll = function () {
       controls.style.top = "0";
     }
   }
+  else {
+    controls.style.top = "0";
+  }
 };
 
 function navbar_default(){
