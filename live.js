@@ -11,6 +11,215 @@ var links = document.querySelector('.links');
 var mainpage = document.querySelectorAll(".main_page");
 var name_status, email_status, subj_status, msg_status;
 
+
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    // If opened as a local file, browsers block fetch() of file:// URLs.
+    if (window.location.protocol === 'file:') {
+      console.error('[Portfolio] This page was opened via file://. Please run a local web server (e.g., Python http.server) or use GitHub Pages to avoid CORS/file protocol restrictions.');
+      return;
+    }
+
+    fetch('data/site.json', { cache: 'no-store' })
+      .then(r => r.json())
+      .then(data => {
+        renderProfile(data.profile);
+        renderExperience(data.experience);
+        renderEducation(data.education);
+        renderProjects(data.projects);
+        renderSocial(data.contacts?.social || []);
+        renderSkills(data.profile?.skills);
+      })
+      .catch(err => console.error('Failed to load site.json', err));
+  } catch (e) {
+    console.error(e);
+  }
+});
+
+function renderProfile(profile){
+  const ageSpan = document.getElementById('my_age');
+  
+  if (ageSpan && profile?.birth?.year){
+    const today = new Date();
+    const y = profile.birth.year, m = (profile.birth.month ?? 1) - 1, d = profile.birth.day ?? 1;
+  
+    let age = today.getFullYear() - y;
+  
+    const hasBirthdayPassed = (today.getMonth() > m) || (today.getMonth() === m && today.getDate() >= d);
+    if (!hasBirthdayPassed) age -= 1;
+  
+    ageSpan.innerText = String(age);
+  }
+}
+
+function renderSkills(skills){
+  if (!skills) return;
+  
+  const devUl = document.getElementById('dev_skills');
+  
+  if (devUl){
+    devUl.querySelectorAll('li').forEach(n => n.remove());
+    
+    (skills.development || []).forEach(s => {
+      const li = document.createElement('li');
+      li.textContent = s;
+      devUl.appendChild(li);
+    });
+  }
+
+  const langUl = document.getElementById('lang_skills');
+  if (langUl){
+    langUl.querySelectorAll('li').forEach(n => n.remove());
+    
+    (skills.languages || []).forEach(l => {
+      const li = document.createElement('li');
+      const b = document.createElement('b');
+      
+      b.textContent = `${l.name}:`;
+      li.appendChild(b);
+      li.appendChild(document.createTextNode(` ${l.level}`));
+      langUl.appendChild(li);
+    });
+  }
+}
+
+function renderExperience(experience){
+  const list = document.getElementById('work_exp_list');
+  
+  if (!list || !Array.isArray(experience)) return;
+  
+  list.innerHTML = '';
+  experience.forEach(exp => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <h4 class="period">${escapeHtml(exp.period)}</h4>
+      <p class="title"><b>${escapeHtml(exp.position)}&#32;at&#32;${escapeHtml(exp.company)}</b></p>
+    `;
+
+    if (Array.isArray(exp.details)){
+      exp.details.forEach(t => {
+        const p = document.createElement('p');
+        p.className = 'content';
+        p.textContent = t;
+        li.appendChild(p);
+      });
+    }
+
+    if (exp.checklist_title){
+      const header = document.createElement('p');
+      header.innerHTML = `<b>${escapeHtml(exp.checklist_title)}</b>`;
+      li.appendChild(header);
+    }
+
+    if (Array.isArray(exp.checklist) && exp.checklist.length){
+      const header = document.createElement('p');
+      li.appendChild(header);
+      
+      const ul = document.createElement('ul');
+      ul.className = 'checklist';
+      
+      exp.checklist.forEach(c => {
+        const cli = document.createElement('li');
+        cli.textContent = c;
+        ul.appendChild(cli);
+      });
+      li.appendChild(ul);
+    }
+
+    list.appendChild(li);
+  });
+}
+
+function renderEducation(education){
+  if (!education) return;
+  
+  const uni = document.getElementById('education_university');
+  
+  if (uni){
+    uni.innerHTML = '';
+  
+    (education.university || []).forEach(u => {
+      const li = document.createElement('li');
+      
+      li.innerHTML = `
+        <h4 class="period">${escapeHtml(u.period)}</h4>
+        <p class="title"><b>${escapeHtml(u.institution)}</b></p>
+        <p class="content">${escapeHtml(u.degree)}</p>
+      `;
+      uni.appendChild(li);
+    });
+  }
+
+  const courses = document.getElementById('education_courses');
+  if (courses){
+    courses.innerHTML = '';
+    
+    (education.courses || []).forEach(c => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <h4 class="period">${escapeHtml(c.period)}</h4>
+        <p class="title"><b>${escapeHtml(c.institution)}</b></p>
+        <p class="content">${escapeHtml(c.description)}</p>
+      `;
+      courses.appendChild(li);
+    });
+  }
+}
+
+function renderProjects(projects){
+  const list = document.getElementById('projects_list');
+  
+  if (!list || !Array.isArray(projects)) return;
+  
+  list.innerHTML = '';
+  projects.forEach(p => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <p class="title"><b>${escapeHtml(p.title)}</b></p>
+      <p class="content">${escapeHtml(p.description)}</p>
+    `;
+    list.appendChild(li);
+  });
+}
+
+function renderSocial(social){
+  const ul = document.getElementById('social_links');
+  
+  if (!ul || !Array.isArray(social)) return;
+  
+  ul.innerHTML = '';
+  social.forEach(s => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = s.href;
+  
+    if (s.target) a.target = s.target;
+    a.textContent = ' ' + s.text;
+  
+    const b = document.createElement('b');
+    b.textContent = s.label + ':';
+  
+    li.appendChild(b);
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
+}
+
+function escapeHtml(str){
+  if (str == null) return '';
+  
+  return String(str).replace(/[&<>"']/g, function(m){
+    switch(m){
+      case '&': return '&amp;';
+      case '<': return '&lt;';
+      case '>': return '&gt;';
+      case '"': return '&quot;';
+      case "'": return '&#39;';
+      default: return m;
+    }
+  });
+}
+
 window.onscroll = function () {
   if (document.documentElement.scrollTop > 400) {
     backTop.style.visibility = "visible";
