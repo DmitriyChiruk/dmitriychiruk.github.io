@@ -220,8 +220,17 @@ function renderProjects(projects){
     const li = document.createElement('li');
     li.innerHTML = `
       <p class="title"><b>${escapeHtml(p.title)}</b></p>
-      <p class="content">${escapeHtml(p.description)}</p>
     `;
+
+    if (Array.isArray(p.description)){
+      p.description.forEach(t => {
+        const p = document.createElement('p');
+        p.className = 'content';
+        p.textContent = t;
+        li.appendChild(p);
+      });
+    }
+    
     list.appendChild(li);
   });
 }
