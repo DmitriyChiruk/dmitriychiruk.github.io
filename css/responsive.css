@@ -1,0 +1,86 @@
+/* Media queries and responsive styles */
+@media (max-width: 720px) {
+	#toggler{
+		display: flex;
+		justify-content: right;
+		flex-direction: column;
+		align-items: flex-end;
+		width: 98%;
+		height: fit-content;
+	}
+
+	#toggler_img{
+		display:block;
+		width: 45px;
+		height: 45px;
+		max-height: 5vh;
+		padding: 2%;
+	}
+
+	.controls{
+		height: fit-content;
+		align-items: flex-start;
+		justify-content: center;
+		clip-path: polygon(0 0, 100% 0, 100% 7vh, 0 7vh);
+		transition: clip-path 0.6s 0.25s ease-out, border-radius 0.25s;
+		transition: top 0.7s, clip-path 0.6s ease-in;
+	}
+
+	.controls.open{
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+		-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+		transition: clip-path 0.6s ease-out;
+	}
+
+	.controls #logo{
+		padding: 0;
+		margin: 0;
+		height: 45px;
+		max-height: 5vh;
+	}
+
+	.controls .logo{
+		height: 45px;
+		max-height: 5vh;
+		padding: 1.2vh;
+	}
+
+	.links{
+		height: fit-content;
+		width: 100%;
+		margin: 0;
+		padding: 0 2% 5% 0;
+		flex-direction: column;
+		align-items: flex-end;
+		visibility: hidden;
+		opacity: 0;
+		transition: opacity 0.75s, visibility 0.75s;
+	}
+	.links.open{
+		visibility: visible;
+		opacity: 1;
+		transition: opacity 0.45s 0.3s,  visibility 0.75s;
+	}
+
+	.links li{
+		padding: 1.5em 0 10px 0;
+		width: 100%;
+		text-align: right;
+		border-bottom: 3px solid white;
+	}
+
+	.links a{
+		font-size: 18px;
+	}
+}
+
+@media (max-height: 500px) {
+	.controls {
+		height: 15%;
+		transition: top 0.7s;
+	}
+
+	.controls .logo {
+		height: 100%;
+	}
+}

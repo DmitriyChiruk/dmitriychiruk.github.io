@@ -1,0 +1,87 @@
+/* Navbar styles: controls, logo, toggler, links */
+.go_top_btn{
+	position: fixed;
+    bottom: 10px;
+    right: 14px;
+
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+    line-height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #52565c;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.4);
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.3s, visibility 0.3s;
+    z-index: 99;
+}
+
+#toggler{
+	display: flex;
+	margin-right: 2%;
+}
+
+#toggler_img{
+	display:none;
+	height: 45px;
+	width: 45px;
+}
+
+.controls{
+	height: 7%;
+	display:  flex;
+	justify-content: space-between;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	align-items: center;
+	background-color: #2c3135;
+	z-index: 999;
+}
+
+.controls .logo{
+	height: 7vh;
+}
+
+.controls #logo{
+	height: 80%;
+	padding: 10%;
+	margin-left: 2%;
+}
+
+.links{
+	height: 100%;
+	width: 95%;
+	margin: 0 2% 0 0;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	list-style: none;
+}
+
+.links li{
+	margin: 0 10px;
+}
+
+.links a{
+	text-decoration: none;
+	font-family: FredokaOne;
+	font-size: 17px;
+	color: #f4f5f8;
+	margin: 5px;
+}
+
+.links a:hover{
+	text-decoration: underline;
+	color: #c7bfbf;
+}
+ .links .active{
+ 	color: rgba(248, 178, 28, 0.8);
+ }
