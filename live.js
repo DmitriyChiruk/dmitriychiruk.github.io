@@ -291,11 +291,21 @@ function renderCertificates(certs){
   const next = section.querySelector('.carousel-btn.next');
 
   const scrollBy = () => {
-    const firstCard = track.querySelector('.card');
-    if (!firstCard) return 300;
-    
-    const rect = firstCard.getBoundingClientRect();
-    return rect.width + 16;
+    const cards = track.querySelectorAll('.card');
+    if (!cards.length) return 300;
+    const rect = cards[0].getBoundingClientRect();
+    let gap = 16;
+    if (cards.length > 1){
+      const rect2 = cards[1].getBoundingClientRect();
+      const computedGap = Math.round(rect2.left - rect.right);
+      if (!isNaN(computedGap) && computedGap >= 0) gap = computedGap;
+    } else {
+      // try computed style
+      const cs = window.getComputedStyle(track);
+      const g = parseInt(cs.columnGap || cs.gap || '16', 10);
+      if (!isNaN(g)) gap = g;
+    }
+    return rect.width + gap;
   };
 
   let offset = 0;
@@ -309,6 +319,27 @@ function renderCertificates(certs){
   next?.addEventListener('click', () => { offset += scrollBy(); apply(); });
   window.addEventListener('resize', apply);
   apply();
+
+  // Wheel horizontal scroll support
+  carousel.addEventListener('wheel', (e) => {
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+      e.preventDefault();
+      offset += e.deltaX;
+      apply();
+    }
+  }, { passive: false });
+
+  // Drag / touch to scroll
+  let isDown = false, startX = 0, startOffset = 0;
+  const startDrag = (clientX) => { isDown = true; startX = clientX; startOffset = offset; carousel.classList.add('grabbing'); };
+  const moveDrag = (clientX) => { if (!isDown) return; const dx = clientX - startX; offset = startOffset - dx; apply(); };
+  const endDrag = () => { isDown = false; carousel.classList.remove('grabbing'); };
+  carousel.addEventListener('mousedown', (e) => startDrag(e.clientX));
+  window.addEventListener('mousemove', (e) => moveDrag(e.clientX));
+  window.addEventListener('mouseup', endDrag);
+  carousel.addEventListener('touchstart', (e) => startDrag(e.touches[0].clientX), { passive: true });
+  window.addEventListener('touchmove', (e) => moveDrag(e.touches[0].clientX), { passive: true });
+  window.addEventListener('touchend', endDrag);
 
   const modal = document.getElementById('certificate_modal');
   const closeBtn = document.getElementById('modal_close');
@@ -327,6 +358,15 @@ function openCertModal(imgUrl, title){
   mimg.alt = title || 'Certificate';
   modal.classList.add('open');
   modal.setAttribute('aria-hidden', 'false');
+  // lock body scroll
+  document.body.classList.add('modal-open');
+  // ESC key to close
+  modal._onKey = (e) => { if (e.key === 'Escape') closeCertModal(); };
+  window.addEventListener('keydown', modal._onKey);
+  // handle Android back button / browser back
+  modal._onPop = () => closeCertModal();
+  window.addEventListener('popstate', modal._onPop);
+  history.pushState({ certModal: true }, '');
 }
 
 function closeCertModal(){
@@ -336,6 +376,12 @@ function closeCertModal(){
 
   modal.classList.remove('open');
   modal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
+  if (modal._onKey) { window.removeEventListener('keydown', modal._onKey); delete modal._onKey; }
+  if (modal._onPop) { window.removeEventListener('popstate', modal._onPop); delete modal._onPop; }
+  if (history.state && history.state.certModal) {
+    history.back();
+  }
 }
 
 function createSquarePreview(src){
