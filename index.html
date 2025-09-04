@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="css/experience.css">
 	<link rel="stylesheet" href="css/contact.css">
 	<link rel="stylesheet" href="css/footer.css">
+	<link rel="stylesheet" href="css/certificates.css">
 	<link rel="stylesheet" href="css/responsive.css">
 	<title>Dmytro Chyruk</title>
 	<link rel="shortcut icon" href="img/logoBold.svg" type="image/x-icon">
@@ -110,7 +111,22 @@
 	</div>
 
   	<div id="certificates" class="main_page">
+    	<div class="certificates">
+        	<h3>Certificates</h3>
+        	<div class="carousel-wrapper">
+            	<button class="carousel-btn prev" aria-label="Previous certificate">&#10094;</button>
+            	<div id="certificates_carousel" class="carousel"></div>
+            	<button class="carousel-btn next" aria-label="Next certificate">&#10095;</button>
+        	</div>
+    	</div>
 
+      	<div id="certificate_modal" class="cert-modal" aria-hidden="true">
+        	<div class="modal-backdrop"></div>
+        	<div class="modal-content">
+            	<img id="modal_image" alt="Certificate preview">
+            	<button id="modal_close" class="modal-close" aria-label="Close">&times;</button>
+        	</div>
+    	</div>
 	</div>
 
   	<div id="contact" class="main_page">

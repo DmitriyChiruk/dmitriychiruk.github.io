@@ -124,4 +124,32 @@
       { "label": "Skype", "href": "https://join.skype.com/invite/iiPxOAAQ7YFz", "text": "Dmytro Chyruk", "target": "_blank" }
     ]
   }
+  ,
+  "certificates": [
+    {
+      "title": "DeepLearning.AI TensorFlow Developer",
+      "thumbnail": "img/certificates/DeepLearning.png",
+      "image": "img/certificates/DeepLearning.png",
+      "credentialId": "WR6ZJ9DZ5F7S",
+      "description": "Course completion covering building and training neural networks with TensorFlow."
+    },
+    {
+      "title": "Cambridge English: First (FCE)",
+      "image": "img/certificates/FCE.jpg",
+      "credentialId": null,
+      "description": "B2 First certificate demonstrating Upper-Intermediate English proficiency."
+    },
+    {
+      "title": "Samsung IT-School",
+      "image": "img/certificates/Samsung IT-School.jpg",
+      "credentialId": null,
+      "description": "Course completion in application programming for Android."
+    },
+    {
+      "title": "Step IT Academy",
+      "image": "img/certificates/Step IT.jpg",
+      "credentialId": null,
+      "description": "Course completion in Junior Computer Academy."
+    }
+  ]
 }

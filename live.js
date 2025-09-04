@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderProjects(data.projects);
         renderSocial(data.contacts?.social || []);
         renderSkills(data.profile?.skills);
+        renderCertificates(data.certificates || []);
       })
       .catch(err => console.error('Failed to load site.json', err));
   } catch (e) {
@@ -82,10 +83,13 @@ function renderProfile(profile){
 
   // Age calculation
   const ageSpan = document.getElementById('my_age');
+  
   if (ageSpan && profile?.birth?.year){
     const today = new Date();
     const y = profile.birth.year, m = (profile.birth.month ?? 1) - 1, d = profile.birth.day ?? 1;
+  
     let age = today.getFullYear() - y;
+  
     const hasBirthdayPassed = (today.getMonth() > m) || (today.getMonth() === m && today.getDate() >= d);
     if (!hasBirthdayPassed) age -= 1;
     ageSpan.textContent = String(age);
@@ -219,6 +223,195 @@ function renderProjects(projects){
       <p class="content">${escapeHtml(p.description)}</p>
     `;
     list.appendChild(li);
+  });
+}
+
+function renderCertificates(certs){
+  const section = document.getElementById('certificates');
+  const carousel = document.getElementById('certificates_carousel');
+  if (!section) return;
+
+  if (!Array.isArray(certs) || certs.length === 0){
+    section.style.display = 'none';
+    return;
+  }
+
+  section.style.display = '';
+  if (!carousel) return;
+  carousel.innerHTML = '';
+
+  const track = document.createElement('div');
+  track.className = 'carousel-track';
+  carousel.appendChild(track);
+
+  certs.forEach(c => {
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    const upper = document.createElement('div');
+    upper.className = 'thumb';
+
+    const img = document.createElement('img');
+    img.alt = `${c.title || 'Certificate'} preview`;
+    
+    const fullSrc = c.image || c.thumbnail;
+    createSquarePreview(fullSrc).then(previewUrl => {
+      img.src = previewUrl || fullSrc;
+    }).catch(() => { img.src = fullSrc; });
+    img.addEventListener('click', () => openCertModal(fullSrc, c.title));
+    upper.appendChild(img);
+
+    const lower = document.createElement('div');
+    lower.className = 'meta';
+    const title = document.createElement('div');
+    title.className = 'title';
+    title.textContent = c.title;
+    lower.appendChild(title);
+    
+    if (c.credentialId){
+      const cred = document.createElement('div');
+      cred.className = 'cred';
+      cred.textContent = `Credential ID: ${c.credentialId}`;
+      lower.appendChild(cred);
+    }
+    
+    if (c.description){
+      const desc = document.createElement('div');
+      desc.className = 'desc';
+      desc.textContent = c.description;
+      lower.appendChild(desc);
+    }
+
+    card.appendChild(upper);
+    card.appendChild(lower);
+    track.appendChild(card);
+  });
+
+  const prev = section.querySelector('.carousel-btn.prev');
+  const next = section.querySelector('.carousel-btn.next');
+
+  const scrollBy = () => {
+    const cards = track.querySelectorAll('.card');
+    if (!cards.length) return 300;
+    const rect = cards[0].getBoundingClientRect();
+    let gap = 16;
+    if (cards.length > 1){
+      const rect2 = cards[1].getBoundingClientRect();
+      const computedGap = Math.round(rect2.left - rect.right);
+      if (!isNaN(computedGap) && computedGap >= 0) gap = computedGap;
+    } else {
+      // try computed style
+      const cs = window.getComputedStyle(track);
+      const g = parseInt(cs.columnGap || cs.gap || '16', 10);
+      if (!isNaN(g)) gap = g;
+    }
+    return rect.width + gap;
+  };
+
+  let offset = 0;
+  const maxOffset = () => Math.max(0, track.scrollWidth - carousel.clientWidth);
+
+  const apply = () => {
+    offset = Math.max(0, Math.min(offset, maxOffset()));
+    track.style.transform = `translateX(${-offset}px)`;
+  };
+  prev?.addEventListener('click', () => { offset -= scrollBy(); apply(); });
+  next?.addEventListener('click', () => { offset += scrollBy(); apply(); });
+  window.addEventListener('resize', apply);
+  apply();
+
+  // Wheel horizontal scroll support
+  carousel.addEventListener('wheel', (e) => {
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+      e.preventDefault();
+      offset += e.deltaX;
+      apply();
+    }
+  }, { passive: false });
+
+  // Drag / touch to scroll
+  let isDown = false, startX = 0, startOffset = 0;
+  const startDrag = (clientX) => { isDown = true; startX = clientX; startOffset = offset; carousel.classList.add('grabbing'); };
+  const moveDrag = (clientX) => { if (!isDown) return; const dx = clientX - startX; offset = startOffset - dx; apply(); };
+  const endDrag = () => { isDown = false; carousel.classList.remove('grabbing'); };
+  carousel.addEventListener('mousedown', (e) => startDrag(e.clientX));
+  window.addEventListener('mousemove', (e) => moveDrag(e.clientX));
+  window.addEventListener('mouseup', endDrag);
+  carousel.addEventListener('touchstart', (e) => startDrag(e.touches[0].clientX), { passive: true });
+  window.addEventListener('touchmove', (e) => moveDrag(e.touches[0].clientX), { passive: true });
+  window.addEventListener('touchend', endDrag);
+
+  const modal = document.getElementById('certificate_modal');
+  const closeBtn = document.getElementById('modal_close');
+  const backdrop = modal?.querySelector('.modal-backdrop');
+  closeBtn?.addEventListener('click', closeCertModal);
+  backdrop?.addEventListener('click', closeCertModal);
+}
+
+function openCertModal(imgUrl, title){
+  const modal = document.getElementById('certificate_modal');
+  const mimg = document.getElementById('modal_image');
+
+  if (!modal || !mimg) return;
+
+  mimg.src = imgUrl;
+  mimg.alt = title || 'Certificate';
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  // lock body scroll
+  document.body.classList.add('modal-open');
+  // ESC key to close
+  modal._onKey = (e) => { if (e.key === 'Escape') closeCertModal(); };
+  window.addEventListener('keydown', modal._onKey);
+  // handle Android back button / browser back
+  modal._onPop = () => closeCertModal();
+  window.addEventListener('popstate', modal._onPop);
+  history.pushState({ certModal: true }, '');
+}
+
+function closeCertModal(){
+  const modal = document.getElementById('certificate_modal');
+
+  if (!modal) return;
+
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
+  if (modal._onKey) { window.removeEventListener('keydown', modal._onKey); delete modal._onKey; }
+  if (modal._onPop) { window.removeEventListener('popstate', modal._onPop); delete modal._onPop; }
+  if (history.state && history.state.certModal) {
+    history.back();
+  }
+}
+
+function createSquarePreview(src){
+  return new Promise((resolve, reject) => {
+    if (!src) { reject(new Error('No image src')); return; }
+
+    const img = new Image();
+    img.onload = () => {
+      try {
+        const size = Math.min(img.naturalWidth || img.width, img.naturalHeight || img.height);
+        const sx = Math.max(0, Math.floor((img.naturalWidth - size) / 2));
+        const sy = Math.max(0, Math.floor((img.naturalHeight - size) / 2));
+        const canvas = document.createElement('canvas');
+
+        canvas.width = size;
+        canvas.height = size;
+
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, sx, sy, size, size, 0, 0, size, size);
+
+        const url = canvas.toDataURL('image/jpeg', 0.9);
+        resolve(url);
+      }
+      catch (e) {
+        resolve(src);
+      }
+    };
+    
+    img.onerror = () => resolve(src);
+    img.src = src;
   });
 }
 

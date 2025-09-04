@@ -83,6 +83,23 @@
 	color: black;
 }
 
+/* Medium screens: stack Education over Projects below 1200px */
+@media (max-width: 1200px) {
+	#experience .additional_exp{
+		flex-direction: column;
+	}
+
+	#experience .education{
+		width: 100%;
+		padding-right: 0;
+	}
+
+	#experience .projects{
+		width: 100%;
+		padding-top: 2%;
+	}
+}
+
 @media (max-width: 716px) {
 	#experience{
 		width: 100%;
