@@ -17,6 +17,11 @@
 		padding: 2%;
 	}
 
+	#about .about_info span ul li{
+        display: flex;
+        min-width: 50vw;
+        justify-content: flex-start;
+    }
 	.controls{
 		height: fit-content;
 		align-items: flex-start;
