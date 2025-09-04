@@ -41,9 +41,9 @@
   	<div id="greeting" class="main_page">
   		<span>
   			<h3>Welcome</h3>
-  			<h2>I`m Dmytro Chyruk</h2>
+			<h2 id="greeting_name">I`m Dmytro Chyruk</h2>
   			<div class="position">
-  				<h3>C++ Developer</h3>
+				<h3 id="greeting_title">C++ Developer</h3>
   			</div>
   			<p>This website was created by myself to alow You to get to know me better</p>
   		</span>
@@ -51,19 +51,21 @@
 
 	<div id="about" class="main_page">
 		<div class="about_info">
-			<img src="img/Profile_pic.jpg">
+			<img id="about_pic" src="img/Profile_pic.jpg" alt="Profile picture">
 			<span>
-				<h2>Dmytro Chyruk</h2>
-				<h3>C++ Developer</h3>
-				<p>I`m a student, who is looking for a job to develop myself as a specialist.</p>
-				<p>My professional interests are Gamedev and Machine Learning.</p>
+				<h2 id="about_name">Dmytro Chyruk</h2>
+				<h3 id="about_title">C++ Developer</h3>
+				<div id="about_bio">
+					<p>I`m a student, who is looking for a job to develop myself as a specialist.</p>
+					<p>My professional interests are Gamedev and Machine Learning.</p>
+				</div>
 				<ul>
-					<li><b>From:</b> Kharkiv, Ukraine</li>
-					<li><b>Live in:</b> Kyiv, Ukraine</li>
+					<li><b>From:</b> <span id="about_from">Kharkiv, Ukraine</span></li>
+					<li><b>Live in:</b> <span id="about_livein">Kyiv, Ukraine</span></li>
 					<li><b>Age:</b>	<span id="my_age"></span>
 					</li>
 				</ul>
-				<a href="downloads/Dmytro Chyruk Resume.pdf" download="Dmytro Chyruk Resume.pdf" target="_blank"><button>Download CV</button></a>
+				<a id="about_cv_link" href="downloads/Dmytro Chyruk Resume.pdf" download="Dmytro Chyruk Resume.pdf" target="_blank"><button>Download CV</button></a>
 			</span>
 		</div>
 		<div class="skills">

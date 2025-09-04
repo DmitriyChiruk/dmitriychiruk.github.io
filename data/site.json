@@ -2,7 +2,8 @@
   "profile": {
     "firstName": "Dmytro",
     "lastName": "Chyruk",
-    "title": "C++ Developer",
+    "title": "AI/ML Engineer",
+    "photo": "img/Profile_pic.jpg",
     "birth": {
       "year": 2003,
       "month": 10,
@@ -20,7 +21,7 @@
       "development": ["C++", "Python", "Maths", "Git"],
       "languages": [
         { "name": "Ukrainian", "level": "Native" },
-        { "name": "English", "level": "Upper Intermediate (B2)" },
+        { "name": "English", "level": "Upper Intermediate (Fluent)" },
         { "name": "Russian", "level": "Bilingual" }
       ]
     },
@@ -28,11 +29,20 @@
   },
   "experience": [
     {
-      "period": "Dec 2023 - Present",
+      "period": "Oct 2024 - Aug 2025",
+      "position": "ML/CV Research Engineer",
+      "company": "FlightMind.AI",
+      "details": [
+        "Conducted research and development in the field of computer vision, focusing on image matching techniques. Explored and compared various methods, such as template matching and keypoint-based approaches. Designed and tested feature extraction and similarity evaluation pipelines. Actively participated in the experimental process to refine matching accuracy and robustness.",
+        "Technologies: Python, Pytorch, OpenCV, C++"
+      ]
+    },
+    {
+      "period": "Dec 2023 - Sep 2024",
       "position": "C++/UE4 Game Developer",
       "company": "Wide Rails",
       "details": [
-        "Working on AAA-oriented indie story game. My duties were to extend already created logic, create new actors, subsystems, mechanics and work with external open-source libraries. C++ code was preferable and used wherever it`s possible.",
+        "Working on indie story game. My duties were to extend already created logic,  create new actors, subsystems, mechanics and work with external open-source libraries. C++ code was preferable and used wherever it`s possible.",
         "(Game details are NDA-protected)",
         "Technologies: C++, Blueprints, UE 5.1"
       ]

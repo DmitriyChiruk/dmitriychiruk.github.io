@@ -14,7 +14,6 @@ var name_status, email_status, subj_status, msg_status;
 
 document.addEventListener('DOMContentLoaded', () => {
   try {
-    // If opened as a local file, browsers block fetch() of file:// URLs.
     if (window.location.protocol === 'file:') {
       console.error('[Portfolio] This page was opened via file://. Please run a local web server (e.g., Python http.server) or use GitHub Pages to avoid CORS/file protocol restrictions.');
       return;
@@ -37,18 +36,59 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function renderProfile(profile){
+  // Greeting name and title
+  const fullName = [profile?.firstName, profile?.lastName].filter(Boolean).join(' ');
+  const gName = document.getElementById('greeting_name');
+  if (gName && fullName) gName.textContent = `I'm ${fullName}`;
+  const gTitle = document.getElementById('greeting_title');
+  if (gTitle && profile?.title) gTitle.textContent = profile.title;
+
+  // About section: name, title, bio paragraphs
+  const aName = document.getElementById('about_name');
+  if (aName && fullName) aName.textContent = fullName;
+  const aTitle = document.getElementById('about_title');
+  if (aTitle && profile?.title) aTitle.textContent = profile.title;
+
+  const aboutBio = document.getElementById('about_bio');
+  if (aboutBio && Array.isArray(profile?.summary)){
+    // Clear existing
+    aboutBio.innerHTML = '';
+    profile.summary.forEach(p => {
+      const pe = document.createElement('p');
+      pe.textContent = p;
+      aboutBio.appendChild(pe);
+    });
+  }
+
+  // Location
+  const fromSpan = document.getElementById('about_from');
+  if (fromSpan && profile?.location?.from) fromSpan.textContent = profile.location.from;
+  const liveInSpan = document.getElementById('about_livein');
+  if (liveInSpan && profile?.location?.liveIn) liveInSpan.textContent = profile.location.liveIn;
+
+  // CV link
+  const cv = document.getElementById('about_cv_link');
+  if (cv && profile?.downloadCV){
+    cv.href = profile.downloadCV;
+    cv.setAttribute('download', profile.downloadCV.split('/').pop());
+  }
+
+  // Photo
+  const pic = document.getElementById('about_pic');
+  if (pic && profile?.photo){
+    pic.src = profile.photo;
+    pic.alt = `${fullName} profile photo`;
+  }
+
+  // Age calculation
   const ageSpan = document.getElementById('my_age');
-  
   if (ageSpan && profile?.birth?.year){
     const today = new Date();
     const y = profile.birth.year, m = (profile.birth.month ?? 1) - 1, d = profile.birth.day ?? 1;
-  
     let age = today.getFullYear() - y;
-  
     const hasBirthdayPassed = (today.getMonth() > m) || (today.getMonth() === m && today.getDate() >= d);
     if (!hasBirthdayPassed) age -= 1;
-  
-    ageSpan.innerText = String(age);
+    ageSpan.textContent = String(age);
   }
 }
 
