@@ -1,0 +1,127 @@
+{
+  "profile": {
+    "firstName": "Dmytro",
+    "lastName": "Chyruk",
+    "title": "AI/ML Engineer",
+    "photo": "img/Profile_pic.jpg",
+    "birth": {
+      "year": 2003,
+      "month": 10,
+      "day": 1
+    },
+    "summary": [
+      "I`m a student, who is looking for a job to develop myself as a specialist.",
+      "My professional interests are Gamedev and Machine Learning."
+    ],
+    "location": {
+      "from": "Kharkiv, Ukraine",
+      "liveIn": "Kyiv, Ukraine"
+    },
+    "skills": {
+      "development": ["C++", "Python", "Maths", "Git"],
+      "languages": [
+        { "name": "Ukrainian", "level": "Native" },
+        { "name": "English", "level": "Upper Intermediate (Fluent)" },
+        { "name": "Russian", "level": "Bilingual" }
+      ]
+    },
+    "downloadCV": "downloads/Dmytro Chyruk Resume.pdf"
+  },
+  "experience": [
+    {
+      "period": "Oct 2024 - Aug 2025",
+      "position": "ML/CV Research Engineer",
+      "company": "FlightMind.AI",
+      "details": [
+        "Conducted research and development in the field of computer vision, focusing on image matching techniques. Explored and compared various methods, such as template matching and keypoint-based approaches. Designed and tested feature extraction and similarity evaluation pipelines. Actively participated in the experimental process to refine matching accuracy and robustness.",
+        "Technologies: Python, Pytorch, OpenCV, C++"
+      ]
+    },
+    {
+      "period": "Dec 2023 - Sep 2024",
+      "position": "C++/UE4 Game Developer",
+      "company": "Wide Rails",
+      "details": [
+        "Working on indie story game. My duties were to extend already created logic,  create new actors, subsystems, mechanics and work with external open-source libraries. C++ code was preferable and used wherever it`s possible.",
+        "(Game details are NDA-protected)",
+        "Technologies: C++, Blueprints, UE 5.1"
+      ]
+    },
+    {
+      "period": "Apr 2023 - Jul 2023",
+      "position": "C++/UE4 Game Developer Intern",
+      "company": "FracturedByte",
+      "details": [
+        "During the internship I was developing Zombieland game. That`s a third-person story shooter with different types of weapons and enemies, that also includes different mechanics of them.",
+        "Technologies: C++, Blueprints, UE 4.27"
+      ],
+      "checklist_title": "Key Tasks:",
+      "checklist": [
+        "Create main character, enemies and bosses",
+        "Create HUD and all necessary menus (main, pause, settings menus, death screen, etc.) with localization",
+        "Create melee, ranged and AOE weapons",
+        "Create enemy and pickup spawners",
+        "Animations, VFX and sound effects implementation",
+        "Level streaming and cutscenes",
+        "Working with Save/ Load system"
+      ]
+    }
+  ],
+  "education": {
+    "university": [
+      {
+        "period": "2024 - present",
+        "institution": "Taras Shevchenko National University of Kyiv",
+        "degree": "Master`s in Mathematical Methods of Artificial Intelligence"
+      },
+      {
+        "period": "2020 - 2024",
+        "institution": "Taras Shevchenko National University of Kyiv",
+        "degree": "Bachelor`s in Applied Maths"
+      }
+    ],
+    "courses": [
+      {
+        "period": "2023",
+        "institution": "DeepLearning.AI",
+        "description": "Course: TensorFlow Developer\nCredential ID: WR6ZJ9DZ5F7S"
+      },
+      {
+        "period": "2018 - 2019",
+        "institution": "Samsung IT-School",
+        "description": "Course: Application programming for Android"
+      },
+      {
+        "period": "2016 - 2019",
+        "institution": "Step IT Academy",
+        "description": "Course: Junior Computer Academy"
+      }
+    ]
+  },
+  "projects": [
+    {
+      "title": "Object tracking with unique identifiers",
+      "description": "Built  a  real-time  video  tracking  solution  that  can  follow  and  re-identify  same objects  across  different  video  streams.  The  system  works  with  live  webcams, video files, and YouTube streams, and ensures each object keeps a consistent ID even if it disappears and reappears later.The project includes a console interface for  running  locally  as  well  as  a  server–client  setup  for  larger  video  processing tasks. It automatically  resolves  conflicts when multiple objects  are detected. The setup can be adapted for various use cases such as security, traffic monitoring, or analytics.\nTechnologies: OpenCV, YOLO, RT-DETR, ChromaDB, FastAPI, TorchReID"
+    },
+    {
+      "title": "Multimodal Knowledge Agent",
+      "description": "A web-based application that allows users to interact with a custom knowledge base using text and voice. The system supports uploading different types of documents (PDF, Word, spreadsheets, presentations, etc) that may include both text and visuals. Then processes them into searchable chunks, stored in a vector index, and retrieved when users ask questions.\nTechnologies: Streamlit, Whisper, Groq, ChromaDB, Docling"
+    },
+    {
+      "title": "Visual Transformer",
+      "description": "Created  and  trained  ViT  model  for  classification  task  from  scratch,  based  on \"Attention  is  all  you  need\"  article.  Also  trained  model  on  CIFAR10  to compare results with SOTA solutions. \nTechnologies: Visual transformers, Attention module, OpenCV, PyTorch"
+    },
+    {
+      "title": "3D Sphere Move",
+      "description": "This project was a test task for a job at ModuleWorks. Here we have a sphere that moves thru a 3d surface on a specific path and deletes from it each point it touches. My task was to find this dots and save the 1st layer of the surface."
+    }
+  ],
+  "contacts": {
+    "social": [
+      { "label": "Phone", "href": "tel:050-566-7522", "text": "+(380)50-566-7522" },
+      { "label": "Telegram", "href": "https://t.me/chiruk_dimasik", "text": "@chiruk_dimasik", "target": "_blank" },
+      { "label": "LinkedIn", "href": "https://www.linkedin.com/in/dmytro-chyruk/", "text": "Dmytro Chyruk", "target": "_blank" },
+      { "label": "Skype", "href": "https://join.skype.com/invite/iiPxOAAQ7YFz", "text": "Dmytro Chyruk", "target": "_blank" }
+    ]
+  }
+}
