@@ -1,0 +1,149 @@
+/* Certificates carousel and modal */
+#certificates {
+  width: 100%;
+  background-color: #f4f5f8;
+}
+
+#certificates .certificates {
+  width: 80%;
+  background: white;
+  margin: 5% auto;
+  padding: 3% 5%;
+  border-radius: 12px;
+}
+
+#certificates h3 {
+  font-size: 25px;
+  margin: 0 0 1rem 0;
+}
+
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.carousel {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(240px, 280px);
+  gap: 16px;
+  transition: transform 0.35s ease;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  aspect-ratio: 1 / 2;
+  background: #f4f5f8;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card .thumb {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #e2e5ea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-in;
+}
+
+.card .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card .meta {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+.card .meta .title {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.card .meta .cred {
+  font-family: SpaceMono;
+  font-size: 12px;
+  color: #52565c;
+  margin-bottom: 8px;
+}
+
+.carousel-btn {
+  background: #2c3135;
+  color: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin: 0 8px;
+  cursor: pointer;
+}
+
+.carousel-btn:hover {
+  background: #3c4248;
+}
+
+/* Modal */
+.cert-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.cert-modal.open { display: flex; }
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.modal-content img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+.modal-close {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: #2c3135;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media (max-width: 716px) {
+  #certificates .certificates { width: 90%; padding: 5%; }
+  .carousel-track { grid-auto-columns: 85%; }
+}

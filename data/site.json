@@ -124,4 +124,84 @@
       { "label": "Skype", "href": "https://join.skype.com/invite/iiPxOAAQ7YFz", "text": "Dmytro Chyruk", "target": "_blank" }
     ]
   }
+  ,
+  "certificates": [
+    {
+      "title": "Cambridge English: First (FCE)",
+      "thumbnail": "img/certificates/FCE.jpg",
+      "image": "img/certificates/FCE.jpg",
+      "credentialId": null,
+      "description": "B2 First certificate demonstrating Upper-Intermediate English proficiency."
+    },
+    {
+      "title": "Cambridge English: First (FCE)",
+      "thumbnail": "img/certificates/FCE.jpg",
+      "image": "img/certificates/FCE.jpg",
+      "credentialId": null,
+      "description": "B2 First certificate demonstrating Upper-Intermediate English proficiency."
+    },
+    {
+      "title": "Cambridge English: First (FCE)",
+      "thumbnail": "img/certificates/FCE.jpg",
+      "image": "img/certificates/FCE.jpg",
+      "credentialId": null,
+      "description": "B2 First certificate demonstrating Upper-Intermediate English proficiency."
+    },
+    {
+      "title": "Cambridge English: First (FCE)",
+      "thumbnail": "img/certificates/FCE.jpg",
+      "image": "img/certificates/FCE.jpg",
+      "credentialId": null,
+      "description": "B2 First certificate demonstrating Upper-Intermediate English proficiency."
+    },
+    {
+      "title": "Cambridge English: First (FCE)",
+      "thumbnail": "img/certificates/FCE.jpg",
+      "image": "img/certificates/FCE.jpg",
+      "credentialId": null,
+      "description": "B2 First certificate demonstrating Upper-Intermediate English proficiency."
+    },
+    {
+      "title": "Cambridge English: First (FCE)",
+      "thumbnail": "img/certificates/FCE.jpg",
+      "image": "img/certificates/FCE.jpg",
+      "credentialId": null,
+      "description": "B2 First certificate demonstrating Upper-Intermediate English proficiency."
+    },
+    {
+      "title": "Cambridge English: First (FCE)",
+      "thumbnail": "img/certificates/FCE.jpg",
+      "image": "img/certificates/FCE.jpg",
+      "credentialId": null,
+      "description": "B2 First certificate demonstrating Upper-Intermediate English proficiency."
+    },
+    {
+      "title": "Cambridge English: First (FCE)",
+      "thumbnail": "img/certificates/FCE.jpg",
+      "image": "img/certificates/FCE.jpg",
+      "credentialId": null,
+      "description": "B2 First certificate demonstrating Upper-Intermediate English proficiency."
+    },
+    {
+      "title": "Cambridge English: First (FCE)",
+      "thumbnail": "img/certificates/FCE.jpg",
+      "image": "img/certificates/FCE.jpg",
+      "credentialId": null,
+      "description": "B2 First certificate demonstrating Upper-Intermediate English proficiency."
+    },
+    {
+      "title": "Cambridge English: First (FCE)",
+      "thumbnail": "img/certificates/FCE.jpg",
+      "image": "img/certificates/FCE.jpg",
+      "credentialId": null,
+      "description": "B2 First certificate demonstrating Upper-Intermediate English proficiency."
+    },
+    {
+      "title": "DeepLearning.AI TensorFlow Developer",
+      "thumbnail": "img/certificates/DeepLearning.png",
+      "image": "img/certificates/DeepLearning.png",
+      "credentialId": "WR6ZJ9DZ5F7S",
+      "description": "Course completion covering building and training neural networks with TensorFlow."
+    }
+  ]
 }
