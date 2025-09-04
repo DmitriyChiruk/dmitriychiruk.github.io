@@ -1,0 +1,39 @@
+/* Greeting section styles */
+#greeting {
+	background-color: transparent;
+}
+
+#greeting span{
+	max-height: 50%;
+	max-width: 80%;
+	padding: 5% 20%;
+	padding-bottom: 5%;
+	text-align: center;
+}
+
+#greeting h2{
+	font-size: 50px;
+}
+
+#greeting h3{
+	font-size: 25px;
+}
+
+#greeting .position{
+	width: fit-content;
+	margin: auto;
+	color: white;
+	padding: 0 0.5em;
+	background-color: rgba(248, 178, 28, 1);
+	border-radius: 50px;
+}
+
+#greeting .position h3{
+	padding: 5px;
+}
+
+#greeting p{
+	width: 60%;
+	margin: 0 20%;
+	font-size: 13px;
+}

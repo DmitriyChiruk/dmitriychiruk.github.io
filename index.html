@@ -3,7 +3,15 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/navbar.css">
+	<link rel="stylesheet" href="css/greeting.css">
+	<link rel="stylesheet" href="css/about.css">
+	<link rel="stylesheet" href="css/experience.css">
+	<link rel="stylesheet" href="css/contact.css">
+	<link rel="stylesheet" href="css/footer.css">
+	<link rel="stylesheet" href="css/certificates.css">
+	<link rel="stylesheet" href="css/responsive.css">
 	<title>Dmytro Chyruk</title>
 	<link rel="shortcut icon" href="img/logoBold.svg" type="image/x-icon">
 </head>
@@ -34,9 +42,9 @@
   	<div id="greeting" class="main_page">
   		<span>
   			<h3>Welcome</h3>
-  			<h2>I`m Dmytro Chyruk</h2>
+			<h2 id="greeting_name">I`m Dmytro Chyruk</h2>
   			<div class="position">
-  				<h3>C++ Developer</h3>
+				<h3 id="greeting_title">C++ Developer</h3>
   			</div>
   			<p>This website was created by myself to alow You to get to know me better</p>
   		</span>
@@ -44,41 +52,32 @@
 
 	<div id="about" class="main_page">
 		<div class="about_info">
-			<img src="img/Profile_pic.jpg">
+			<img id="about_pic" src="img/Profile_pic.jpg" alt="Profile picture">
 			<span>
-				<h2>Dmytro Chyruk</h2>
-				<h3>C++ Developer</h3>
-				<p>I`m a student, who is looking for a job to develop myself as a specialist.</p>
-				<p>My professional interests are Gamedev and Machine Learning.</p>
+				<h2 id="about_name">Dmytro Chyruk</h2>
+				<h3 id="about_title">C++ Developer</h3>
+				<div id="about_bio">
+					<p>I`m a student, who is looking for a job to develop myself as a specialist.</p>
+					<p>My professional interests are Gamedev and Machine Learning.</p>
+				</div>
 				<ul>
-					<li><b>From:</b> Kharkiv, Ukraine</li>
-					<li><b>Live in:</b> Kyiv, Ukraine</li>
-					<li><b>Age:</b>	<myage id="my_age"><myage>
-						<script>
-							today = new Date()
-							document.getElementById('my_age').innerText = today.getFullYear() - 2003 - (today.getMonth() < 10 )
-						</script>
+					<li><b>From:</b> <span id="about_from">Kharkiv, Ukraine</span></li>
+					<li><b>Live in:</b> <span id="about_livein">Kyiv, Ukraine</span></li>
+					<li><b>Age:</b>	<span id="my_age"></span>
 					</li>
 				</ul>
-				<a href="downloads/Dmytro Chyruk Resume.pdf" download="Dmytro Chyruk Resume.pdf" target="_blank"><button>Download CV</button></a>
+				<a id="about_cv_link" href="downloads/Dmytro Chyruk Resume.pdf" download="Dmytro Chyruk Resume.pdf" target="_blank"><button>Download CV</button></a>
 			</span>
 		</div>
 		<div class="skills">
 			<h3 class="my_skills">My Skills</h3>
 			<div class="data">
 
-				<ul class="dev">
+				<ul class="dev" id="dev_skills">
 					<h3>Development: </h3>
-					<li>C++</li>
-					<li>Python</li>
-					<li>Maths</li>
-					<li>Git</li>
 				</ul>
-				<ul class="langs">
+				<ul class="langs" id="lang_skills">
 					<h3>Languages: </h3>
-					<li><b>Ukrainian:</b> Native</li>
-					<li><b>English:</b> Upper Intermediate (B2)</li>
-					<li><b>Russian:</b> Bilingual</li>
 				</ul>
 			</div>
 		</div>
@@ -87,87 +86,47 @@
   	<div id="experience" class="main_page">
   		<div class="work_exp">
   			<h3>Working experience</h3>
-  			<ul>
-  				<li>
-  					<h4 class="period">Dec 2023 - Present</h4>
-  					<p class="title"><b>C++/UE4 Game Developer at Wide Rails</b></p>
-  					<p class="content">
-  						<p>&nbsp;&nbsp;&nbsp;&nbsp;Working on AAA-oriented indie story game. My duties were to extend already created logic, create new actors, subsystems, mechanics and work with external open-source libraries. C++ code was preferable and used wherever it`s possible.</p>
-  						<p>(Game details are NDA-protected)</p>
-  						<p><b>Technologies: </b>C++, Blueprints, UE 5.1</p>
-  				</li>
-  				<li>
-  					<h4 class="period">Apr 2023 - Jul 2023</h4>
-  					<p class="title"><b>C++/UE4 Game Developer Intern at FracturedByte</b></p>
-					<p class="content">&nbsp;&nbsp;&nbsp;&nbsp;During the internship I was developing Zombieland game. That`s a third-person story shooter with different types of weapons and enemies, that also includes different mechanics of them.</p>
-  					<p><b>Technologies: </b>C++, Blueprints, UE 4.27</p>
-  					<p><b>Key Tasks:</b></p>
-  					<ul class="checklist">
-  						<li>Create main character, enemies and bosses</li>
-  						<li>Create HUD and all necessary menus (main, pause, settings menus, death screen, etc.) with localization</li>
-  						<li>Create melee, ranged and AOE weapons</li>
-  						<li>Create enemy and pickup spawners</li>
-  						<li>Animations, VFX and sound effects implementation</li>
-  						<li>Level streaming and cutscenes</li>
-  						<li>Working with Save/ Load system</li>
-  					</ul>
-  				</li>
-  			</ul>
+			<ul id="work_exp_list"></ul>
   		</div>
 
   		<div class="additional_exp">
-	  		<div class="education">
-	  			<div class="university">
-	  				<h3>Education</h3>
-	  				<ul>
-	  					<li>
-	  						<h4 class="period">2020 - 2024</h4>
-	  						<p class="title"><b>Taras Shevchenko National University of Kyiv</b></p>
-	  						<p class="content">Bachelor`s in Applied Maths</p>
-	  					</li>
-	  				</ul>
-	  			</div>
-	  			<hr>
-	  			<div class="courses">
-	  				<h3>Courses</h3>
-	  				<ul>
-	  					<li>
-	  						<h4 class="period">2018 - 2019</h4>
-	  						<p class="title"><b>Samsung IT-School</b></p>
-	  						<p class="content">Course: Application programming for Android</p>
-	  					</li>
-	  					<li>
-	  						<h4 class="period">2016 - 2019</h4>
-	  						<p class="title"><b>Step IT Academy</b></p>
-	  						<p class="content">Course: Junior Computer Academy</p>
-	  					</li>
-	  				</ul>
-	  			</div>
-	  		</div>
+			<div class="education">
+				<div class="university">
+					<h3>Education</h3>
+					<ul id="education_university"></ul>
+				</div>
+				<hr>
+				<div class="courses">
+					<h3>Courses</h3>
+					<ul id="education_courses"></ul>
+				</div>
+			</div>
 
 	  		<div class="projects">
 	  			<h3>Projects</h3>
-	  			<ul>
-	  				<li>
-	  					<p class="title"><b>3D Sphere Move</b></p>
-	  					<p class="content">&nbsp;&nbsp;&nbsp;&nbsp;This project was a test task for a job at ModuleWorks. Here we have a sphere that moves thru a 3d surface on a specific path and deletes from it each point it touches. My task was to find this dots and save the 1st layer of the surface.</p>
-	  				</li>
-	  				<li>
-	  					<p class="title"><b>Pif Paf game</b></p>
-	  					<p class="content">&nbsp;&nbsp;&nbsp;&nbsp;Was developed as university project to learn OOP basics and how to work with SFML library. It`s a 2d game, where you watch from the top, move your character, rotate and shoot into enemies, that are running after you.</p>
-	  				</li>
-	  				<li>
-	  					<p class="title"><b>Long Int</b></p>
-	  					<p class="content">&nbsp;&nbsp;&nbsp;&nbsp;As well created as a university project to study OOP and algorithms for a work with very long numbers. Algorithms were taken from the Knuth`s book. (such as quick multiplication, addition etc.)</p>
-	  				</li>
-	  			</ul>
+				<ul id="projects_list"></ul>
 	  			<a class="gitlab" href="https://gitlab.com/m9953" target="_blank">You can find them in my Gitlab</a>
 	  		</div>
   		</div>
 	</div>
 
   	<div id="certificates" class="main_page">
+    	<div class="certificates">
+        	<h3>Certificates</h3>
+        	<div class="carousel-wrapper">
+            	<button class="carousel-btn prev" aria-label="Previous certificate">&#10094;</button>
+            	<div id="certificates_carousel" class="carousel"></div>
+            	<button class="carousel-btn next" aria-label="Next certificate">&#10095;</button>
+        	</div>
+    	</div>
 
+      	<div id="certificate_modal" class="cert-modal" aria-hidden="true">
+        	<div class="modal-backdrop"></div>
+        	<div class="modal-content">
+            	<img id="modal_image" alt="Certificate preview">
+            	<button id="modal_close" class="modal-close" aria-label="Close">&times;</button>
+        	</div>
+    	</div>
 	</div>
 
   	<div id="contact" class="main_page">
@@ -175,12 +134,7 @@
   		<span>
   			<div class="soc_media">
   				<h3>Find me in social media</h3>
-  				<ul>
-  					<li><b>Phone:</b><a href="tel:050-566-7522"> +(380)50-566-7522</a></li>
-  					<li><b>Telegram:</b><a href="https://t.me/chiruk_dimasik" target="_blank"> @chiruk_dimasik</a></li>
-  					<li><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/dmytro-chyruk/" target="_blank">Dmytro Chyruk</a></li>
-  					<li><b>Skype:</b> <a href="https://join.skype.com/invite/iiPxOAAQ7YFz" target="_blank">Dmytro Chyruk</a></li>
-  				</ul>
+				<ul id="social_links"></ul>
 	  		</div>
 
   			<div class="email">

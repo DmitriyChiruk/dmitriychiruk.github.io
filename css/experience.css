@@ -1,0 +1,157 @@
+/* Experience, education, projects styles */
+#experience	{
+	width: 80%;
+	padding-left: 10%;
+	padding-top: 5%;
+	background-color: white;
+	margin-bottom: 5%;
+	display: grid;
+}
+
+#experience .additional_exp{
+	display: flex;
+	align-items: flex-start;
+}
+
+#experience .education{
+	width: 45%;
+	padding-top: 5%;
+	padding-right: 5%;
+}
+
+#experience	.education	hr{
+	border: 1.5px solid rgba(248, 178, 28, 0.8);
+	background-color: rgba(248, 178, 28, 0.8);
+	border-radius: 2px;
+}
+
+#experience .projects{
+	width: 50%;
+	padding-top: 5%;
+}
+
+#experience ul{
+	padding: 0;
+	margin: 0;
+}
+
+#experience li{
+	margin: 0.5em 0;
+	background-color: #f4f5f8;
+	padding: 1em;
+	border-radius: 15px;
+	list-style: none;
+}
+
+#experience .work_exp .checklist li{
+	margin: 0.5em 1em;
+	padding: 0;
+	list-style: inside;
+	list-style-type: disc;
+}
+
+#experience h3{
+	font-size: 25px;
+	margin: 0;
+	padding-bottom: 0;
+}
+
+#experience hr{
+	margin: 1.5em 0;
+}
+
+#experience .period{
+	font-size: 18px;
+	width: fit-content;
+	background-color: rgba(248, 178, 28, 1);
+	border-radius: 40px;
+	margin: 0;
+	padding: 10px;
+}
+
+#experience .title{
+	font-size: 18px;
+	margin: 0.75em 0 0.25em 0;
+}
+
+#experience .content{
+	margin: 0;
+}
+
+#experience .gitlab{
+	margin-top: 2em;
+	color: black;
+}
+
+/* Medium screens: stack Education over Projects below 1200px */
+@media (max-width: 1200px) {
+	#experience .additional_exp{
+		flex-direction: column;
+	}
+
+	#experience .education{
+		width: 100%;
+		padding-right: 0;
+	}
+
+	#experience .projects{
+		width: 100%;
+		padding-top: 2%;
+	}
+}
+
+@media (max-width: 716px) {
+	#experience{
+		width: 100%;
+		flex-direction: column;
+		margin: 0;
+		padding: 0;
+		padding-top: 5%;
+	}
+
+	#experience .additional_exp{
+		display: flex;
+		flex-direction: column;
+	}
+
+	#experience .work_exp{
+		width: 80%;
+		padding: 5% 10%;
+	}
+
+	#experience .education{
+		width: 80%;
+		padding: 5% 10%;
+	}
+
+	#experience .projects{
+		width: 80%;
+		padding: 5% 10%;
+	}
+
+	#experience h3{
+		font-size: 20px;
+	}
+
+	#experience .title{
+		font-size: 15px;
+	}
+
+	#experience .period{
+		font-size: 16px;
+	}
+
+	#experience .content{
+		font-size: 14px;
+	}
+
+	#experience .work_exp{
+		width: 80%;
+		padding: 5% 10% 10% 10%;
+	}
+
+	#experience .gitlab{
+		font-size: 12px;
+		text-align: center;
+	}
+}
