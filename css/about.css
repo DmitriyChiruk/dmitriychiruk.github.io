@@ -1,0 +1,182 @@
+/* About section and skills styles */
+#about{
+	min-height: 80%;
+	height: fit-content;
+	padding: 5% 0;
+	background-color: #f4f5f8;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#about .about_info{
+	max-height: 80%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#about .about_info img{
+	width: 20%;
+	margin-left: 5%;
+	box-shadow: 0.5em 0.5em 5px #c7bfbf;
+	border-radius: 5px;
+}
+
+#about .about_info span{
+	margin: 0 10%;
+	margin-bottom: 5%;
+}
+
+#about .about_info h2{
+	font-size: 40px;
+}
+
+#about .about_info h3{
+	font-size: 20px;
+}
+
+#about .about_info p{
+	font-size: 16px;
+}
+
+#about .about_info span ul{
+	font-size: 16px;
+	list-style: none;
+	margin: 1em 0;
+	padding: 0;
+}
+
+#about .about_info span ul li{
+	padding-top: 0.4em;
+}
+
+#about .about_info button{
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+
+	background-color: transparent;
+	border: 3px solid rgba(248, 178, 28, 0.8);
+	border-radius: 1em;
+
+	color: rgba(248, 178, 28, 1);
+	font-family: FredokaOne;
+	font-size: 17px;
+
+	padding: 0.5em 1em;
+	line-height: 1.5;
+	border-radius: 1em;
+	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, 
+				border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+	cursor: pointer;
+}
+
+#about .about_info button:hover{
+	background-color: rgba(248, 178, 28, 1);
+	border-color: rgba(248, 178, 28, 1);
+	color: white;
+}
+
+#about .skills{
+	width: 100%;
+}
+
+#about .my_skills{
+	width: 50%;
+	margin: 5% 25% 0.5em 25%;
+	font-size: 40px;
+	text-align: center;
+}
+
+#about .data{
+	display: flex;
+	justify-content: center;
+}
+
+#about .data h3{
+	font-size: 25px;
+	margin: 0 0 0.3em 0;
+}
+
+#about .data ul{
+	list-style: none;
+	font-size: 20px;
+	padding: 0 10%;
+}
+
+#about .data ul li{
+	padding-top: 0.5em;
+}
+
+@media (max-width: 716px){
+	#about .about_info{
+		display:flex;
+		flex-direction: column;
+	}
+
+	#about .about_info img{
+		margin-top: 10%;
+		width: 50%;
+	}
+
+	#about .about_info h2{
+		font-size: 30px;
+	}
+
+	#about .about_info h3{
+		font-size: 16px;
+	}
+
+	#about .about_info p{
+		font-size: 14px;
+		text-align: center;
+	}
+
+	#about .about_info span{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	#about .about_info span ul{
+		font-size: 14px;
+	}
+
+	#about .about_info button{
+		justify-content: center;
+		font-size: 16px;
+	}
+    
+	#about .skills h3{
+		font-size: 25px;
+	}
+    
+	#about .data{
+		display: flex;
+		justify-self: center;
+	}
+
+	#about .data h3{
+		font-size: 16px;
+	}
+
+	#about .data ul{
+		font-size: 14px;
+		padding: 0;
+	}
+
+	#about .data .dev{
+		width: 42.5%;
+		padding-right: 2.5%;
+		padding-left: 5%;
+	}
+
+	#about .data .langs{
+		width: 42.5%;
+		padding-right: 5%;
+		padding-left: 2.5%;
+	}
+}
