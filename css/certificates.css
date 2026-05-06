@@ -1,15 +1,16 @@
 /* Certificates carousel and modal */
 #certificates {
   width: 100%;
-  min-height: 60%;
+  min-height: fit-content;
   max-height: 70%;
   background: #f4f5f8;
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 
 #certificates .certificates {
-  width: 80%;
+  width: 90%;
   margin: 5% auto;
-  padding: 3% 5%;
   border-radius: 12px;
 }
 
@@ -22,15 +23,20 @@
   position: relative;
   display: flex;
   align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
 }
 
 .carousel {
   overflow: hidden;
   width: 100%;
-  cursor: grab;
+  cursor: e-resize;
   user-select: none;
   overscroll-behavior-x: contain;
   overscroll-behavior-y: none;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
 }
 
 .carousel-track {
@@ -39,7 +45,15 @@
   grid-auto-columns: minmax(240px, 280px);
   gap: 16px;
   transition: transform 0.35s ease;
-  padding: 5% 0;
+  padding: 10%;
+}
+
+.carousel-wrapper.no-scroll .carousel { cursor: default; }
+.carousel-wrapper.no-scroll .carousel-btn { visibility: hidden; }
+.carousel-wrapper.no-scroll .carousel-track {
+  justify-content: center;
+  width: 100%;
+  transform: none !important;
 }
 
 .card {
@@ -94,10 +108,11 @@
   background: #2c3135;
   color: white;
   border: none;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
   border-radius: 50%;
-  margin: 0 8px;
+  margin: 0 0.5em;
   cursor: pointer;
 }
 
@@ -116,7 +131,7 @@
     filter: none; 
     transform: scale(1.03); 
     box-shadow: 0 10px 24px rgba(0,0,0,0.12); 
-    z-index: 1;
+    z-index: -1 !important;
 }
 
 .carousel.grabbing {
@@ -177,6 +192,13 @@ body.modal-open {
 }
 
 @media (max-width: 716px) {
-  #certificates .certificates { width: 90%; padding: 5%; }
-  .carousel-track { grid-auto-columns: 70%; gap: 12px; }
+  #certificates .certificates { width: 90%; }
+  .carousel-track {max-width: 90%; grid-auto-columns: 70%; gap: 12px; }
+  .carousel-btn { min-width: 7vw; }
+}
+
+@media (max-width: 350px) {
+  #certificates .certificates { width: 90%; }
+  .carousel-track {max-width: 85%; grid-auto-columns: 70%; gap: 12px; }
+  .carousel-btn { min-width: 10vw; }
 }

@@ -105,15 +105,15 @@
         "Built  a  real-time  video  tracking  solution  that  can  follow  and  re-identify  same objects  across  different  video  streams.  The  system  works  with  live  webcams, video files, and YouTube streams, and ensures each object keeps a consistent ID even if it disappears and reappears later.The project includes a console interface for  running  locally  as  well  as  a  server–client  setup  for  larger  video  processing tasks. It automatically  resolves  conflicts when multiple objects  are detected. The setup can be adapted for various use cases such as security, traffic monitoring, or analytics.", 
         " ",
         "Technologies: OpenCV, YOLO, RT-DETR, ChromaDB, FastAPI, TorchReID"
-      ]
+    ]
     },
     {
       "title": "Multimodal Knowledge Agent",
-      "description": [
-        "A web-based application that allows users to interact with a custom knowledge base using text and voice. The system supports uploading different types of documents (PDF, Word, spreadsheets, presentations, etc) that may include both text and visuals. Then processes them into searchable chunks, stored in a vector index, and retrieved when users ask questions.",
-        " ",
-        "Technologies: Streamlit, Whisper, Groq, ChromaDB, Docling"
-      ]
+        "description": [
+            "A web-based application that allows users to interact with a custom knowledge base using text and voice. The system supports uploading different types of documents (PDF, Word, spreadsheets, presentations, etc) that may include both text and visuals. Then processes them into searchable chunks, stored in a vector index, and retrieved when users ask questions.",
+            " ",
+            "Technologies: Streamlit, Whisper, Groq, ChromaDB, Docling"
+        ]
     },
     {
       "title": "Visual Transformer",

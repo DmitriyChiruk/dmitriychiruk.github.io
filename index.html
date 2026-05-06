@@ -18,7 +18,7 @@
 <body>
 	<noscript><h2>Website WILL NOT work properly without JavaScript, please enable it.</h2></noscript>
 
-	<div class="go_top_btn" onclick="window.location.href='#greeting'; navbar_default();">
+	<div class="go_top_btn">
     	<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
   			<path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
 		</svg>
@@ -29,12 +29,12 @@
 				<img id="logo" src="img/logoBoldWhite.svg"></img>
 			</div>
 			<div id="toggler">
-				<img src="img/hamburger.svg" id="toggler_img" onclick="mobile_navbar()"></img>
+				<img src="img/hamburger.svg" id="toggler_img"></img>
 					<ul class="links">
-							<li><a href="#about" class="nav-bar-link" onclick="navbar_click(this)">About</a></li>
-							<li><a href="#experience" class="nav-bar-link" onclick="navbar_click(this)">Experience</a></li>
-							<li style="display:none;"><a href="#certificates" class="nav-bar-link" onclick="navbar_click(this)">Certificates</a></li>
-							<li><a href="#contact" class="nav-bar-link" onclick="navbar_click(this)">Contact</a></li>
+							<li><a href="#about" class="nav-bar-link">About</a></li>
+							<li><a href="#experience" class="nav-bar-link">Experience</a></li>
+							<li style="display:none;"><a href="#certificates" class="nav-bar-link">Certificates</a></li>
+							<li><a href="#contact" class="nav-bar-link">Contact</a></li>
 					</ul>
 			</div>
 	</div>
@@ -44,7 +44,7 @@
   			<h3>Welcome</h3>
 			<h2 id="greeting_name">I`m Dmytro Chyruk</h2>
   			<div class="position">
-				<h3 id="greeting_title">C++ Developer</h3>
+				<h3 id="greeting_title">The Developer</h3>
   			</div>
   			<p>This website was created by myself to alow You to get to know me better</p>
   		</span>
@@ -139,11 +139,11 @@
 
   			<div class="email">
   				<h3>Email via form below</h3>
-  				<input class="form" type="text" id="Name" placeholder="Your Name" maxlength="25" onblur="check_name()">
-  				<input class="form" type="text" id="Email" placeholder="Email Address" maxlength="25" onblur="check_email()">
-  				<input class="form" type="text" id="Subject" placeholder="Subject" maxlength="128" onblur="check_subject()">
-	  			<textarea class="form" id="Message" rows="6" maxlength="512" placeholder="Enter message here.." onblur="check_message()"></textarea>
-  				<button onclick="send_email()" id="send_msg_btn">Send Message</button>
+  				<input class="form" type="text" id="Name" placeholder="Your Name" maxlength="25">
+				<input class="form" type="text" id="Email" placeholder="Email Address" maxlength="25">
+				<input class="form" type="text" id="Subject" placeholder="Subject" maxlength="128">
+				<textarea class="form" id="Message" rows="6" maxlength="512" placeholder="Enter message here.."></textarea>
+				<button id="send_msg_btn">Send Message</button>
   			</div>
   		</span>
 	</div>
@@ -172,6 +172,6 @@
 		<p>Copyright &#169;2024. All rights reserved | This website was built by Dmytro Chyruk</p>
 	</div>
 
-	<script src="live.js"></script>
+	<script type="module" src="js/main.js"></script>
 </body>
 </html>
