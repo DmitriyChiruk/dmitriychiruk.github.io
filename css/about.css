@@ -1,27 +1,35 @@
 /* About section and skills styles */
 #about{
 	min-height: 80%;
-	height: fit-content;
-	padding: 5% 0;
-	background-color: #f4f5f8;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+    height: fit-content;
+    padding: 5% 0;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #about .about_info{
-	max-height: 80%;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    background-color: var(--bg-card);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(0,0,0, 0.03);
+    
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3% 0;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #about .about_info img{
 	width: 20%;
 	margin-left: 5%;
-	box-shadow: 0.5em 0.5em 5px #c7bfbf;
-	border-radius: 5px;
+	border-radius: 10px;
+    box-shadow: none;
 }
 
 #about .about_info span{
@@ -57,26 +65,24 @@
 	text-align: center;
 	vertical-align: middle;
 
-	background-color: transparent;
-	border: 3px solid rgba(248, 178, 28, 0.8);
-	border-radius: 1em;
-
-	color: rgba(248, 178, 28, 1);
-	font-family: FredokaOne;
-	font-size: 17px;
-
-	padding: 0.5em 1em;
-	line-height: 1.5;
-	border-radius: 1em;
-	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, 
-				border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-	cursor: pointer;
+	background-color: var(--accent-blue);
+    border: none;
+    color: white;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 16px;
+	padding: 0.7em 1.5em;
+    border-radius: var(--radius-btn);
+    box-shadow: var(--shadow-soft);
+    
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
 }
 
 #about .about_info button:hover{
-	background-color: rgba(248, 178, 28, 1);
-	border-color: rgba(248, 178, 28, 1);
-	color: white;
+	background-color: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
 }
 
 #about .skills{
@@ -85,32 +91,84 @@
 
 #about .my_skills{
 	width: 50%;
-	margin: 5% 25% 0.5em 25%;
+	margin: 2em 25% 0.5em 25%;
 	font-size: 40px;
 	text-align: center;
 }
 
 #about .data{
 	display: flex;
-	justify-content: center;
+    justify-content: center;
+	align-items: flex-start;
+    gap: 15%;
+    margin-top: 2em;
+    width: 75%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #about .data h3{
-	font-size: 25px;
-	margin: 0 0 0.3em 0;
+	font-size: 20px;
+    width: 100%; 
+    text-align: center;
+    margin-bottom: 15px;
+    color: var(--text-main);
 }
 
 #about .data ul{
 	list-style: none;
-	font-size: 20px;
-	padding: 0 10%;
+    padding: 0;
+	margin: 0;
+    
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
 }
 
 #about .data ul li{
-	padding-top: 0.5em;
+	background-color: white; 
+    color: var(--text-main);
+    font-size: 15px;
+    font-weight: 600;
+    
+    padding: 8px 16px;
+    border-radius: 20px;
+    
+    border: 1px solid rgba(0, 0, 0, 0.08); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    transition: transform 0.15s ease;
 }
 
-@media (max-width: 716px){
+#about .data ul li:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-blue);
+}
+
+#about .data .dev {
+    width: 60%;
+    list-style: none;
+    padding: 0;
+    
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    align-content: flex-start;
+}
+
+#about .data .langs {
+    width: 35%;
+    list-style: none;
+    padding: 0;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+@media (max-width: 720px){
 	#about .about_info{
 		display:flex;
 		flex-direction: column;

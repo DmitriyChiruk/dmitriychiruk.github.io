@@ -1,3 +1,17 @@
+:root {
+    --bg-main: #f8fafc;
+    --bg-card: #ffffff;
+    --accent-blue: #2563eb;
+    --accent-hover: #1d4ed8;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    
+    --radius-card: 16px;
+    --radius-btn: 8px;
+    --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
 /* Base styles: fonts, resets, global styles */
 @font-face{
 	font-family: SpaceMono;
@@ -24,6 +38,8 @@ html, body{
 	scroll-behavior: smooth;
 	scrollbar-width: 0;
 	font-family: Comfortaa;
+	background-color: var(--bg-main);
+    color: var(--text-main);
 }
 
 ::-webkit-scrollbar{
@@ -34,7 +50,7 @@ html, body{
 	height: fit-content;
 	min-height: 100%;
 	width: 100%;
-	background-color: #f4f5f8;
+	background-color: var(--bg-main);
 	display: flex;
 	align-content: center;
 	align-items: center;

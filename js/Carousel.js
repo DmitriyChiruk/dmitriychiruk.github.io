@@ -69,11 +69,21 @@ export class Carousel {
         return rect.width + gap;
     }
 
+    isMobileVersion() {
+        return (window.screen.width <= this.minMobileWidth || window.screen.height <= this.minMobileHeight);
+    }
+
     applyTransform() {
         if (!this.allowScroll) return;
+
         const maxOffset = Math.max(0, this.track.scrollWidth - this.carousel.clientWidth);
         this.offset = Math.max(0, Math.min(this.offset, maxOffset));
-        this.track.style.transform = `translateX(${-this.offset}px)`;
+
+        if (this.isMobileVersion()) {
+            this.carousel.scrollLeft = this.offset;
+        } else {
+            this.track.style.transform = `translateX(${-this.offset}px)`;
+        }
     }
 
     updateScrollMode() {

@@ -17,6 +17,44 @@
 		padding: 2%;
 	}
 
+	#greeting span {
+        padding-top: 20%;
+        max-width: 95%;
+    }
+
+    #greeting h2 {
+        font-size: 38px;
+        line-height: 1.2;
+        margin-bottom: 10px;
+    }
+    
+    #greeting h3 {
+        font-size: 22px;
+    }
+
+	#about .data {
+        flex-direction: column; 
+        width: 100%;
+        gap: 2em;
+        margin: 0;
+        padding: 0 5%;
+        box-sizing: border-box; 
+    }
+
+    #about .data .dev,
+    #about .data .langs {
+        width: 100%; 
+        padding: 0; 
+        margin: 0;
+        box-sizing: border-box;
+        justify-content: center; 
+        align-items: center;
+    }
+
+    #about .data h3 {
+        text-align: center;
+    }
+
     #about .about_info span ul li{
         display: flex;
         min-width: 50vw;
@@ -27,15 +65,19 @@
 		height: fit-content;
 		align-items: flex-start;
 		justify-content: center;
-		clip-path: polygon(0 0, 100% 0, 100% 7vh, 0 7vh);
-		transition: clip-path 0.6s 0.25s ease-out, border-radius 0.25s;
-		transition: top 0.7s, clip-path 0.6s ease-in;
+
+        background-color: rgba(30, 41, 59, 0.85); 
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+
+        clip-path: polygon(0 0, 100% 0, 100% 70px, 0 70px);
+        transition: top 0.4s ease-in-out, clip-path 0.5s ease-in-out, background-color 0.3s ease;
 	}
 
 	.controls.open{
-		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-		-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-		transition: clip-path 0.6s ease-out;
+		background-color: rgba(30, 41, 59, 0.98);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        transition: clip-path 0.5s ease-out, background-color 0.3s ease;
 	}
 
 	.controls #logo{
@@ -72,7 +114,7 @@
 		padding: 1.5em 0 10px 0;
 		width: 100%;
 		text-align: right;
-		border-bottom: 3px solid white;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 	}
 
 	.links a{
@@ -88,5 +130,51 @@
 
 	.controls .logo {
 		height: 100%;
+	}
+}
+
+
+@media (min-width: 721px) and (max-width: 1024px) {
+	#about .about_info{
+		display:flex;
+		flex-direction: column;
+	}
+
+	#about .about_info img{
+		margin-top: 5%;
+		width: 30%;
+	}
+
+	#about .about_info span{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: center;
+	}
+
+	#about .about_info span ul{
+		font-size: 14px;
+		width: 100%;
+	}
+	
+	#about .about_info span li{
+		font-size: 14px;
+		display: flex;
+		flex-direction: row;
+	}
+
+	#about .about_info button{
+		justify-content: center;
+		font-size: 16px;
+	}    
+    
+	#about .data{
+		display: flex;
+		justify-self: center;
+	}
+
+	#about .data ul{
+		font-size: 14px;
+		padding: 0;
 	}
 }

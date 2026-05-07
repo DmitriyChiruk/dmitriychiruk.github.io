@@ -18,7 +18,28 @@
       "liveIn": "Kyiv, Ukraine"
     },
     "skills": {
-      "development": ["C++", "Python", "Maths", "Git"],
+      "development": [
+        "C++", 
+        "Python", 
+        "PyTorch", 
+        "TensorFlow", 
+        "Keras",
+        "OpenCV",
+        "RAG",
+        "MCP",
+        "Vector DB",
+        "YOLO", 
+        "U-Net", 
+        "MoviNet", 
+        "3D CNN",
+        "Scikit-learn",
+        "AWS",
+        "GCP",
+        "MAVLink / MAVSDK", 
+        "TFLite / CoreML",
+        "Blender (Synthetic Data)", 
+        "Git"
+      ],
       "languages": [
         { "name": "Ukrainian", "level": "Native" },
         { "name": "English", "level": "Upper Intermediate (Fluent)" },

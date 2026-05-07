@@ -126,6 +126,7 @@ export class Renderer {
         list.innerHTML = '';
         experience.forEach(exp => {
             const li = document.createElement('li');
+            li.className = 'resume-card';
             li.innerHTML = `
                 <h4 class="period">${this.escapeHtml(exp.period)}</h4>
                 <p class="title"><b>${this.escapeHtml(exp.position)}&#32;at&#32;${this.escapeHtml(exp.company)}</b></p>
@@ -154,6 +155,7 @@ export class Renderer {
                 ul.className = 'checklist';
                 exp.checklist.forEach(c => {
                     const cli = document.createElement('li');
+                    cli.className = 'task-item';
                     cli.textContent = c;
                     ul.appendChild(cli);
                 });
@@ -173,6 +175,7 @@ export class Renderer {
         
             (education.university || []).forEach(u => {
                 const li = document.createElement('li');
+                li.className = 'resume-card';
         
                 li.innerHTML = `
                     <h4 class="period">${this.escapeHtml(u.period)}</h4>
@@ -192,6 +195,7 @@ export class Renderer {
         
             (education.courses || []).forEach(c => {
                 const li = document.createElement('li');
+                li.className = 'resume-card';
         
                 li.innerHTML = `
                     <h4 class="period">${this.escapeHtml(c.period)}</h4>
@@ -211,6 +215,7 @@ export class Renderer {
         list.innerHTML = '';
         projects.forEach(p => {
             const li = document.createElement('li');
+            li.className = 'resume-card';
             li.innerHTML = `<p class="title"><b>${this.escapeHtml(p.title)}</b></p>`;
 
             if (Array.isArray(p.description)) {

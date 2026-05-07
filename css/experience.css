@@ -1,11 +1,12 @@
 /* Experience, education, projects styles */
 #experience	{
 	width: 80%;
-	padding-left: 10%;
-	padding-top: 5%;
-	background-color: white;
-	margin-bottom: 5%;
-	display: grid;
+    max-width: 1200px;
+    margin: 0 auto 5% auto;
+    padding: 5% 0;
+    
+    background-color: transparent;
+    display: grid;
 }
 
 #experience .additional_exp{
@@ -20,8 +21,8 @@
 }
 
 #experience	.education	hr{
-	border: 1.5px solid rgba(248, 178, 28, 0.8);
-	background-color: rgba(248, 178, 28, 0.8);
+	border: 1.5px solid rgba(37, 99, 235, 0.2);
+	background-color: rgba(37, 99, 235, 0.2);
 	border-radius: 2px;
 }
 
@@ -35,12 +36,32 @@
 	margin: 0;
 }
 
-#experience li{
-	margin: 0.5em 0;
-	background-color: #f4f5f8;
-	padding: 1em;
-	border-radius: 15px;
-	list-style: none;
+.resume-card {
+	margin: 1em 0;
+    background-color: var(--bg-card);
+    padding: 1.5em;
+    border-radius: var(--radius-card);
+    list-style: none;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(0,0,0, 0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.resume-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+.task-item {
+    margin: 0.5em 0 0.5em 1.5em;
+    padding: 0;
+    
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    
+    list-style-type: disc;
+    color: var(--text-main);
 }
 
 #experience .work_exp .checklist li{
@@ -61,17 +82,21 @@
 }
 
 #experience .period{
-	font-size: 18px;
-	width: fit-content;
-	background-color: rgba(248, 178, 28, 1);
-	border-radius: 40px;
-	margin: 0;
-	padding: 10px;
+	font-size: 14px;
+    font-family: SpaceMono, monospace;
+    width: fit-content;
+    background-color: transparent; 
+    color: var(--text-muted); 
+    border-radius: 0;
+    margin: 0 0 0.5em 0;
+    padding: 0;
 }
 
 #experience .title{
-	font-size: 18px;
-	margin: 0.75em 0 0.25em 0;
+	font-size: 20px;
+    font-weight: bold;
+    color: var(--text-main);
+    margin: 0 0 0.25em 0;
 }
 
 #experience .content{

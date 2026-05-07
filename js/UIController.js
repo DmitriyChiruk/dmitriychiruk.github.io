@@ -12,18 +12,30 @@ export class UIController {
         this.links = document.querySelector('.links');
         this.mainpages = document.querySelectorAll(".main_page");
 
+        this.carousel = document.getElementById('certificates_carousel');
+
         this.initEventListeners();
     }
 
     initEventListeners() {
         window.addEventListener('scroll', () => this.handleScroll());
+        window.addEventListener('resize', () => this.updateCarouselState());
+        window.addEventListener('load', () => this.updateCarouselState());
 
         if (this.backTop) {
-            this.backTop.addEventListener('click', () => {
-                window.location.hash = '#greeting';
-                this.navbarDefault();
+        this.backTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
-        }
+            
+            this.navbarDefault();
+            
+            if (history.pushState) {
+                history.pushState(null, null, ' ');
+            }
+        });
+    }
 
         if (this.icon) {
             this.icon.addEventListener('click', () => this.toggleMobileNavbar());
@@ -68,6 +80,18 @@ export class UIController {
         } else {
             this.controls.style.top = "0";
         }
+    }
+
+    updateCarouselState() {
+        if (!this.carousel) return;
+
+        setTimeout(() => {
+            if (this.carousel.scrollWidth > this.carousel.clientWidth) {
+                this.carousel.classList.add('is-scrollable');
+            } else {
+                this.carousel.classList.remove('is-scrollable');
+            }
+        }, 50);
     }
 
     navbarDefault() {
