@@ -145,7 +145,7 @@ export class ContactForm {
         }
     }
 
-    submitForm(e) {
+    async submitForm(e) {
         e.preventDefault();
 
         const isNameValid = this.validateName(true);
@@ -154,8 +154,39 @@ export class ContactForm {
         const isMsgValid = this.validateMessage(true);
 
         if (isNameValid && isEmailValid && isSubjValid && isMsgValid) {
-            alert("Message sent successfully! (This is a demo, no actual email will be sent.)");
-            this.resetFields();
+            const backendUrl = "https://portfolio-backend.dchiruk.workers.dev/"
+
+            const originalText = this.sendBtn.textContent;
+            this.sendBtn.textContent = "Sending...";
+            this.sendBtn.disabled = true;
+
+            try {
+                const response = await fetch(backendUrl, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name: this.nameInput.value.trim(),
+                        email: this.emailInput.value.trim(),
+                        subject: this.subjectInput.value.trim(),
+                        message: this.messageInput.value.trim()
+                    })
+                });
+
+                if (response.ok) {
+                    alert("Message sent successfully! I will contact you soon.");
+                    this.resetFields();
+                } else {
+                    alert("Oops! There was a problem submitting your form.");
+                }
+            } catch (error) {
+                console.error("Error submitting form:", error);
+                alert("Network error. Please check your connection and try again.");
+            } finally {
+                this.sendBtn.textContent = originalText;
+                this.sendBtn.disabled = false;
+            }
         } else {
             console.warn("Please fix the errors in the highlighted fields.");
         }
